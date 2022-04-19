@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +9,8 @@ namespace SearchHandlerAndroidBug.ViewModels;
 
 public class BoysPageViewModel
 {
-    private List<Person> _boys = new(6);
-    public List<Person> Boys => _boys;
+    private ObservableCollection<Person> _boys = new();
+    public ObservableCollection<Person> Boys => _boys;
     public BoysPageViewModel()
     {
         _boys.Add(new Person("George"));
@@ -17,6 +18,7 @@ public class BoysPageViewModel
         _boys.Add(new Person("Michael"));
         _boys.Add(new Person("Peter"));
         _boys.Add(new Person("Simon"));
+        _boys.Add(new Person("Edward"));
     }
 }
 

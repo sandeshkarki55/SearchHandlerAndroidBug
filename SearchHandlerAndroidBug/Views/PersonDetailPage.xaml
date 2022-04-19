@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SearchHandlerAndroidBug.Views.GirlsPage"
-             Title="GirlsPage"
+             x:Class="SearchHandlerAndroidBug.Views.PersonDetailPage"
+             Title="PersonDetailPage"
              BackgroundColor="White">
     <StackLayout>
-        <Label Text="Welcome to .NET MAUI!"
+        <Label Text="Person Detail"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
     </StackLayout>

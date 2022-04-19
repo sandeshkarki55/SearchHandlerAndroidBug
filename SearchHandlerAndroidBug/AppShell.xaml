@@ -2,8 +2,8 @@
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SearchHandlerAndroidBug.AppShell"
-             Title="AppShell"
-             BackgroundColor="White">
+       xmlns:views="clr-namespace:SearchHandlerAndroidBug.Views"
+             Title="AppShell">
     <Shell.Resources>
         <DataTemplate x:Key="FlyoutTemplate">
             <Grid x:Name="FlyoutItemLayout"
@@ -32,7 +32,7 @@
                    VerticalOptions="Center"
                    HorizontalOptions="Center"
                    HeightRequest="22"
-                   WidthRequest="22"
+                   WidthRequest="22">
                 </Image>
                 <Label x:Name="FlyoutItemLabel"
                Grid.Column="1"
@@ -71,16 +71,16 @@
         <Style BasedOn="{StaticResource BaseStyle}" TargetType="ShellItem" />
 
         <Style
-            x:Key="WineCardsShell"
+            x:Key="BoysShell"
             BasedOn="{StaticResource BaseStyle}"
             TargetType="Element">
-            <Setter Property="Shell.BackgroundColor" Value="#A01818" />
+            <Setter Property="Shell.BackgroundColor" Value="#5da2ff" />
         </Style>
         <Style
-            x:Key="FoodPairingsShell"
+            x:Key="GirlsShell"
             BasedOn="{StaticResource BaseStyle}"
             TargetType="Element">
-            <Setter Property="Shell.BackgroundColor" Value="#A01818" />
+            <Setter Property="Shell.BackgroundColor" Value="#ffaeb3" />
         </Style>
         <Style
             x:Key="AboutShell"
@@ -89,46 +89,33 @@
             <Setter Property="Shell.BackgroundColor" Value="#A01818" />
         </Style>
     </Shell.Resources>
-    <ShellContent
-        Title="{x:Static resources:AppResources.WelcomeLabel}"
-        ContentTemplate="{DataTemplate views:FirstTimePage}"
-        Route="firstTimePage"
-        Style="{StaticResource FoodPairingsShell}" />
+
 
     <FlyoutItem
-        Title="VinoMatch"
+        Title="People"
         FlyoutDisplayOptions="AsMultipleItems"
-        Route="vinomatch">
-
-
+        Route="people">
 
         <ShellContent
-            Title="{x:Static resources:AppResources.FoodPairingsLabel}"
-            ContentTemplate="{DataTemplate views:FoodPairingCategoriesPage}"
-            Icon="chefhat.png"
-            Route="foodpairingcategories"
-            Style="{StaticResource FoodPairingsShell}" />
-        <ShellContent Route="winecards"
-                      Style="{StaticResource WineCardsShell}"
-                      Title="Wine Cards"
-                      Icon="winecards.png"
-                      ContentTemplate="{DataTemplate views:WineCardsPage}" />
+            Title="Boys"
+            ContentTemplate="{DataTemplate views:BoysPage}"
+            Icon="boyicon.png"
+            Route="boys"
+            Style="{StaticResource BoysShell}" />
+        
+        <ShellContent Route="girls"
+                      Style="{StaticResource GirlsShell}"
+                      Title="girls"
+                      Icon="girlicon.png"
+                      ContentTemplate="{DataTemplate views:GirlsPage}" />
 
- 
-    </FlyoutItem>
+     </FlyoutItem>
 
     <ShellContent
-        Title="{x:Static resources:AppResources.AboutLabel}"
+        Title="About"
         ContentTemplate="{DataTemplate views:AboutPage}"
         Icon="infoicon.png"
         Route="about"
-        Style="{StaticResource AboutShell}" />
-
-    <ShellContent 
-        Title="{x:Static resources:AppResources.HelpLabel}"
-        ContentTemplate="{DataTemplate views:HelpPage}"
-        Icon="helpicon.png"
-        Route="help"
         Style="{StaticResource AboutShell}" />
 
 </Shell>
