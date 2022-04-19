@@ -10,4 +10,9 @@ public partial class GirlsPage : ContentPage
 		this.BindingContext = new GirlsPageViewModel();
 
 	}
+
+    private void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
+    }
 }

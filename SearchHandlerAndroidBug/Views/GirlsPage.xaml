@@ -2,11 +2,93 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SearchHandlerAndroidBug.Views.GirlsPage"
+             xmlns:handler="clr-namespace:SearchHandlerAndroidBug.Handlers"
              Title="GirlsPage"
              BackgroundColor="White">
-    <StackLayout>
-        <Label Text="Welcome to .NET MAUI!"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-    </StackLayout>
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" 
+                                        Value="#4a8acc" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+
+
+        <DataTemplate x:Key="GirlTemplate">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    Grid.RowSpan="2"
+                    Margin="4"
+                    Aspect="AspectFit"
+                    HeightRequest="40"
+                    Source="girlicon.png"
+                    WidthRequest="40" />
+                <Label
+                    Grid.Column="1"
+                    Margin="0"
+                    FontAttributes="None"
+                    FontSize="Medium"
+                    LineBreakMode="NoWrap"
+                    VerticalOptions="Center"
+                    Text="{Binding Name}"
+                    />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="GirlSearchTemplate">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="24" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    Grid.RowSpan="2"
+                    Margin="4"
+                    Aspect="AspectFit"
+                    HeightRequest="20"
+                    Source="girlicon.png"
+                    WidthRequest="20" />
+                <Label
+                     Grid.Column="1"
+                    Margin="0"
+                    FontAttributes="None"
+                    FontSize="Small"
+                    LineBreakMode="NoWrap"
+                    Text="{Binding Name}"
+                    VerticalOptions="Center" />
+            </Grid>
+        </DataTemplate>
+
+
+    </ContentPage.Resources>
+
+
+    <Shell.SearchHandler>
+        <handler:PersonSearchHandler Placeholder="Enter the girl's name"
+                                      ShowsResults="true"
+                                      ItemsSource="{Binding Girls}"
+                                      ItemTemplate="{StaticResource GirlSearchTemplate}" 
+                                      TextColor="#000000" BackgroundColor="#c4e1ff"
+                                       />
+    </Shell.SearchHandler>
+
+    <CollectionView Margin="4" x:Name="GirlCollectionView"
+                    ItemsSource="{Binding Girls}"
+                    ItemTemplate="{StaticResource GirlTemplate}"
+                    SelectionMode="Single"
+                    SelectionChanged="OnCollectionViewSelectionChanged" />
 </ContentPage>
