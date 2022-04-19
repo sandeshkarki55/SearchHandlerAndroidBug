@@ -105,7 +105,7 @@
         
         <ShellContent Route="girls"
                       Style="{StaticResource GirlsShell}"
-                      Title="girls"
+                      Title="Girls"
                       Icon="girlicon.png"
                       ContentTemplate="{DataTemplate views:GirlsPage}" />
 
