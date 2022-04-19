@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SearchHandlerAndroidBug.Views.GirlsPage"
              xmlns:handler="clr-namespace:SearchHandlerAndroidBug.Handlers"
-             Title="GirlsPage"
+             Title="Girls Page"
              BackgroundColor="White">
     <ContentPage.Resources>
         <Style TargetType="Grid">
