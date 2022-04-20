@@ -35,11 +35,12 @@ public class PersonSearchHandler:SearchHandler
         }
         else
         {
-            var searchItems = newValue.ToLower().Split(' ');
+            var search = newValue.ToLower();
 
-            ItemsSource = (from a in Persons
-             where searchItems.All(word => a.Name.ToLower().Contains(word))
-             select a);
+            ItemsSource = (from p in Persons
+             where  p.Name.ToLower().Contains(search)
+             select p);
+           
         }
     }
 
