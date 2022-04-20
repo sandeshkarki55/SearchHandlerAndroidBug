@@ -7,24 +7,23 @@
     <Shell.Resources>
         <DataTemplate x:Key="FlyoutTemplate">
             <Grid x:Name="FlyoutItemLayout"
-                  HeightRequest="{x:OnPlatform Android=50}"
-                  ColumnSpacing="{x:OnPlatform UWP=0}"
-                  RowSpacing="{x:OnPlatform UWP=0}">
+                  HeightRequest="50"
+                  ColumnSpacing="0"
+                  RowSpacing="0">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal" />
                             <VisualState x:Name="Selected">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor"
-                                    Value="{x:OnPlatform Android=#F2F2F2, iOS=#F2F2F2}" />
+                                    <Setter Property="BackgroundColor" Value="#F2F2F2" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
                     </VisualStateGroupList>
                 </VisualStateManager.VisualStateGroups>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="{x:OnPlatform Android=54, iOS=50, UWP=Auto}" />
+                    <ColumnDefinition Width="54" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Image x:Name="FlyoutItemImage"
@@ -37,10 +36,9 @@
                 <Label x:Name="FlyoutItemLabel"
                Grid.Column="1"
                Text="{Binding Title}"
-               FontSize="{x:OnPlatform Android=14, iOS=Small}"
-               HorizontalOptions="{x:OnPlatform UWP=Start}"
-               HorizontalTextAlignment="{x:OnPlatform UWP=Start}"
-               FontAttributes="{x:OnPlatform iOS=Bold}"
+               FontSize="Small"
+               HorizontalOptions="Start"
+               HorizontalTextAlignment="Start"
                VerticalTextAlignment="Center">
                     <Label.TextColor>
                         <OnPlatform x:TypeArguments="Color">
