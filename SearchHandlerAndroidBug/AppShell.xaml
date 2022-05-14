@@ -1,15 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SearchHandlerAndroidBug.AppShell"
-       xmlns:views="clr-namespace:SearchHandlerAndroidBug.Views"
-             Title="AppShell">
+<Shell
+    x:Class="SearchHandlerAndroidBug.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:SearchHandlerAndroidBug.Views"
+    Title="AppShell">
     <Shell.Resources>
         <DataTemplate x:Key="FlyoutTemplate">
-            <Grid x:Name="FlyoutItemLayout"
-                  HeightRequest="50"
-                  ColumnSpacing="0"
-                  RowSpacing="0">
+            <Grid
+                x:Name="FlyoutItemLayout"
+                ColumnSpacing="0"
+                HeightRequest="50"
+                RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="54" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    x:Name="FlyoutItemImage"
+                    HeightRequest="22"
+                    HorizontalOptions="Center"
+                    Source="{Binding FlyoutIcon}"
+                    VerticalOptions="Center"
+                    WidthRequest="22" />
+                <Label
+                    x:Name="FlyoutItemLabel"
+                    Grid.Column="1"
+                    FontSize="Small"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start"
+                    Text="{Binding Title}"
+                    VerticalTextAlignment="Center">
+                    <Label.TextColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <OnPlatform.Platforms>
+                                <On Platform="Android" Value="#D2000000" />
+                            </OnPlatform.Platforms>
+                        </OnPlatform>
+                    </Label.TextColor>
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <OnPlatform.Platforms>
+                                <On Platform="Android" Value="sans-serif-medium" />
+                            </OnPlatform.Platforms>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
@@ -22,41 +58,6 @@
                         </VisualStateGroup>
                     </VisualStateGroupList>
                 </VisualStateManager.VisualStateGroups>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="54" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Image x:Name="FlyoutItemImage"
-                   Source="{Binding FlyoutIcon}"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"
-                   HeightRequest="22"
-                   WidthRequest="22">
-                </Image>
-                <Label x:Name="FlyoutItemLabel"
-               Grid.Column="1"
-               Text="{Binding Title}"
-               FontSize="Small"
-               HorizontalOptions="Start"
-               HorizontalTextAlignment="Start"
-               VerticalTextAlignment="Center">
-                    <Label.TextColor>
-                        <OnPlatform x:TypeArguments="Color">
-                            <OnPlatform.Platforms>
-                                <On Platform="Android"
-                            Value="#D2000000" />
-                            </OnPlatform.Platforms>
-                        </OnPlatform>
-                    </Label.TextColor>
-                    <Label.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <OnPlatform.Platforms>
-                                <On Platform="Android"
-                            Value="sans-serif-medium" />
-                            </OnPlatform.Platforms>
-                        </OnPlatform>
-                    </Label.FontFamily>
-                </Label>
             </Grid>
         </DataTemplate>
         <Style x:Key="BaseStyle" TargetType="Element">
@@ -87,27 +88,92 @@
             <Setter Property="Shell.BackgroundColor" Value="#A01818" />
         </Style>
     </Shell.Resources>
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid
+                x:Name="FlyoutItemLayout"
+                ColumnSpacing="0"
+                HeightRequest="50"
+                RowSpacing="0"
+                VerticalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    x:Name="FlyoutItemImage"
+                    Margin="8"
+                    HeightRequest="32"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="{Binding FlyoutIcon}"
+                    VerticalOptions="Center"
+                    WidthRequest="32" />
+                <Label
+                    x:Name="FlyoutItemLabel"
+                    Grid.Column="1"
+                    Margin="8"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Start"
+                    Text="{Binding Title}"
+                    VerticalOptions="Center" />
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#FFFFFF" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#F2F2F2" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+            </Grid>
 
+        </DataTemplate>
+    </Shell.ItemTemplate>
 
     <FlyoutItem
         Title="People"
         FlyoutDisplayOptions="AsMultipleItems"
         Route="people">
 
-        <ShellContent
-            Title="Boys"
-            ContentTemplate="{DataTemplate views:BoysPage}"
-            Icon="boyicon.png"
-            Route="boys"
-            Style="{StaticResource BoysShell}" />
-        
-        <ShellContent Route="girls"
-                      Style="{StaticResource GirlsShell}"
-                      Title="Girls"
-                      Icon="girlicon.png"
-                      ContentTemplate="{DataTemplate views:GirlsPage}" />
-
-     </FlyoutItem>
+        <Tab Title="Boys" Icon="boyicon.png">
+            <ShellContent
+                Title="Group 1"
+                ContentTemplate="{DataTemplate views:BoysPage}"
+                Icon="boyicon.png"
+                Route="boys"
+                Style="{StaticResource BoysShell}" />
+            <ShellContent
+                Title="Group 2"
+                ContentTemplate="{DataTemplate views:BoysPage1}"
+                Icon="boyicon.png"
+                Route="boys2"
+                Style="{StaticResource BoysShell}" />
+        </Tab>
+        <Tab Title="Girls" Icon="girlicon.png">
+            <ShellContent
+                Title="Group 1"
+                ContentTemplate="{DataTemplate views:GirlsPage}"
+                Icon="girlicon.png"
+                Route="girls"
+                Style="{StaticResource GirlsShell}" />
+            
+            <ShellContent
+                Title="Group 2"
+                ContentTemplate="{DataTemplate views:GirlsPage1}"
+                Icon="girlicon.png"
+                Route="girls2"
+                Style="{StaticResource GirlsShell}" />
+        </Tab>
+    </FlyoutItem>
 
     <ShellContent
         Title="About"

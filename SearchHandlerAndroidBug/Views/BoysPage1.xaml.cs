@@ -2,13 +2,12 @@ using SearchHandlerAndroidBug.ViewModels;
 
 namespace SearchHandlerAndroidBug.Views;
 
-public partial class GirlsPage1 : ContentPage
+public partial class BoysPage1 : ContentPage
 {
-	public GirlsPage1()
+	public BoysPage1()
 	{
 		InitializeComponent();
-		this.BindingContext = new GirlsPageViewModel();
-
+		this.BindingContext = new BoysPageViewModel(1);
 	}
 
     private void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)

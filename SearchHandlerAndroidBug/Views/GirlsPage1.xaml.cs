@@ -2,12 +2,12 @@ using SearchHandlerAndroidBug.ViewModels;
 
 namespace SearchHandlerAndroidBug.Views;
 
-public partial class GirlsPage1 : ContentPage
+public partial class GirlsPage : ContentPage
 {
-	public GirlsPage1()
+	public GirlsPage()
 	{
 		InitializeComponent();
-		this.BindingContext = new GirlsPageViewModel();
+		this.BindingContext = new GirlsPageViewModel(1);
 
 	}
 
